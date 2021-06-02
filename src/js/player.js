@@ -177,7 +177,7 @@ class DPlayer {
     }
 
     /**
-     * Play video
+     * Play video 播放
      */
     play(fromNative) {
         this.paused = false;
@@ -212,7 +212,7 @@ class DPlayer {
     }
 
     /**
-     * Pause video
+     * Pause video - 暂停
      */
     pause(fromNative) {
         this.paused = true;
@@ -246,7 +246,7 @@ class DPlayer {
     }
 
     /**
-     * Set volume
+     * Set volume - 设置音量
      */
     volume(percentage, nostorage, nonotice) {
         percentage = parseFloat(percentage);
@@ -505,6 +505,7 @@ class DPlayer {
         this.on('timeupdate', () => {
             this.bar.set('played', this.video.currentTime / this.video.duration, 'width');
             const currentTime = utils.secondToTime(this.video.currentTime);
+            console.log(23, this.template.ptime);
             if (this.template.ptime.innerHTML !== currentTime) {
                 this.template.ptime.innerHTML = currentTime;
             }

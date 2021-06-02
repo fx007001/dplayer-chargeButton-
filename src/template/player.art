@@ -138,14 +138,14 @@
             </button>
             <div class="dplayer-setting-box">
                 <div class="dplayer-setting-origin-panel">
-                    <div class="dplayer-setting-item dplayer-setting-speed">
-                        <span class="dplayer-label">{{ tran('Speed') }}</span>
-                        <div class="dplayer-toggle">{{@ icons.right }}</div>
+                    <div class="dplayer-setting-item dplayer-setting-speed" >
+                        <span class="dplayer-label">{{ tran('Speed') }} {{ setting }}</span>
+                        <div class="dplayer-speed">1</div>
                     </div>
                     <div class="dplayer-setting-item dplayer-setting-loop">
                         <span class="dplayer-label">{{ tran('Loop') }}</span>
                         <div class="dplayer-toggle">
-                            <input class="dplayer-toggle-setting-input" type="checkbox" name="dplayer-toggle">
+                            <span class="dplayer-toggle-setting-input dplayer-loop-lab" name="dplayer-toggle"></span>
                             <label for="dplayer-toggle"></label>
                         </div>
                     </div>
@@ -176,8 +176,8 @@
                 </div>
                 <div class="dplayer-setting-speed-panel">
                     {{ each options.playbackSpeed }}
-                        <div class="dplayer-setting-speed-item" data-speed="{{ $value }}">
-                            <span class="dplayer-label">{{ $value === 1 ? tran('Normal') : $value }}</span>
+                        <div {{if $value == 1}} class="dplayer-setting-speed-item active-speed" {{else}} class="dplayer-setting-speed-item" {{/if}} data-speed="{{ $value }}">
+                            <span class="dplayer-label">{{ $value }}</span>
                         </div>
                     {{ /each }}
                 </div>

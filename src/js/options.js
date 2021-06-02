@@ -14,6 +14,7 @@ export default (options) => {
         airplay: true,
         hotkey: true,
         preload: 'metadata',
+        speed: 1,
         volume: 0.7,
         playbackSpeed: [0.5, 0.75, 1, 1.25, 1.5, 2],
         apiBackend: defaultApiBackend,

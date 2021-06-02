@@ -10,17 +10,19 @@ class Setting {
         this.player.template.settingButton.addEventListener('click', () => {
             this.show();
         });
-
+        this.lastIndex = 2;
         // loop
         this.loop = this.player.options.loop;
-        this.player.template.loopToggle.checked = this.loop;
+        this.player.template.loopToggle.innerHTML = this.loop ? '打开' : '关闭';
         this.player.template.loop.addEventListener('click', () => {
-            this.player.template.loopToggle.checked = !this.player.template.loopToggle.checked;
-            if (this.player.template.loopToggle.checked) {
-                this.loop = true;
-            } else {
-                this.loop = false;
-            }
+            this.loop = !this.loop;
+            this.player.template.loopToggle.innerHTML = this.loop ? '打开' : '关闭';
+            // this.player.template.loopToggle.checked = !this.player.template.loopToggle.checked;
+            // if (this.player.template.loopToggle.checked) {
+            //     this.loop = true;
+            // } else {
+            //     this.loop = false;
+            // }
             this.hide();
         });
 
@@ -66,7 +68,11 @@ class Setting {
         });
         for (let i = 0; i < this.player.template.speedItem.length; i++) {
             this.player.template.speedItem[i].addEventListener('click', () => {
+                this.player.template.speedItem[this.lastIndex].className = 'dplayer-setting-speed-item';
+                this.player.template.speedItem[i].className = 'dplayer-setting-speed-item active-speed';
+                this.lastIndex = i;
                 this.player.speed(this.player.template.speedItem[i].dataset.speed);
+                this.player.template.speed.speedNode.innerHTML = this.player.template.speedItem[i].dataset.speed;
                 this.hide();
             });
         }

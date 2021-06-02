@@ -4,6 +4,8 @@ const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const gitRevisionPlugin = new GitRevisionPlugin();
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+// const Ex = require('extract-text-webpack-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: 'production',
