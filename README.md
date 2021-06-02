@@ -1,3 +1,44 @@
+## 优化 setting 中的倍速播放按钮 和 循环播放按钮
+
+-   修改文案 在 i18n 中修改 速度为播放速度 洗脑播放 修改为 循环播放
+-   以下简单的修改了 播放速度与洗脑循环按钮
+-   将以下修改打包到 dist 下，然后将打包文件替换掉 dplayer-vue 中的 dplayer 文件下的 dist 就可以实现自定义 dplayer 并在 vue2 中使用
+-   在 player.art 中修改如下 dplayer-speed 添加样式到 controller.scss 中
+
+```
+// controller.scss 添加
+// 修改播放速度的按钮为当前设置的播放速度样式
+ .dplayer-speed {
+    color: #eee;
+    font-size: 13px;
+    line-height: 20px;
+    float: right;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+// 当前播放速度样式设置
+.active-speed{
+    background-color: rgba(0,255,0,0.6);
+    &:hover {
+        background-color: rgba(0,255,0,0.6);
+    }
+}
+// player.art修改
+<div class="dplayer-setting-item dplayer-setting-speed" >
+    <span class="dplayer-label">{{ tran('Speed') }} {{ setting }}</span>
+    <div class="dplayer-speed">1</div>
+</div>
+// template中添加DOM操作节点
+this.speed.speedNode = this.speed.querySelector('.dplayer-speed');
+// 在setting中 操作节点设置所选的播放速度 并添加active-speed样式作为选中状态样式
+this.player.template.speedItem[this.lastIndex].className = 'dplayer-setting-speed-item';
+this.player.template.speedItem[i].className = 'dplayer-setting-speed-item active-speed';
+this.lastIndex = i;
+this.player.speed(this.player.template.speedItem[i].dataset.speed);
+this.player.template.speed.speedNode.innerHTML = this.player.template.speedItem[i].dataset.speed;
+```
+
 <p align="center">
 <img src="https://i.imgur.com/LnPvZvO.png" alt="ADPlayer" width="100">
 </p>
